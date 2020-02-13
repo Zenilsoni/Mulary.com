@@ -15,6 +15,17 @@ Route::get('/', function () {
     return view('dashboard');
 });
 
+Route::get('/admin', function () {
+    return view('adminPages.admindashboard');
+});
+
+Route::group(['prefix' => 'user'], function(){
+    Route::get('allusers', 'UserViewController@getUser');
+    Route::get('approved', 'UserViewController@getApprovedUser');
+    Route::get('compose', function () { return view('userPages.email.compose'); });
+});
+
+
 Route::group(['prefix' => 'email'], function(){
     Route::get('inbox', function () { return view('userPages.email.inbox'); });
     Route::get('read', function () { return view('userPages.email.read'); });
