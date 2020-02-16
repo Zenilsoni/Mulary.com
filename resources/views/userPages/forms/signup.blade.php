@@ -58,7 +58,7 @@
                             <label for="checkboxEnrollment">Are you currently enrolled in College or Universtiy?</label>
 
                             <div class="col-sm-6 form-group">
-                                <div class="form-check form-group">
+                                <div class="form-check form-group" >
                                     <label class="form-check-label">
                                         <input type="radio" class="form-check-input" name="user_type" id="optionsRadios1" value="yes" onclick="radioFunction()">
                                         Yes
@@ -79,7 +79,7 @@
                     {{--                        COLLEGE RADIO SELECTION COLUMNS START--}}
                     {{--                        COLLEGE YES CHECKED SELECTION COLUMNS START--}}
                     <div class="row" id="yesCollege" style="display: none">
-                        <div class="col-sm-12 form-group">
+                        <div class="col-sm-12 form-group {{$errors->has('user_type_college')?'has-error':''}}">
                             <label for="dropDownCollegeContent">Please Select your college or university:</label>
 
                         </div>
@@ -92,24 +92,27 @@
                                 @endforeach
                             </select>
                     </div>
+                        {!! $errors->first('user_type_college', '<div class="alert alert-danger">:message</div>') !!}
                         {{--                        COLLEGE YES CHECKED SELECTION COLUMNS FINISH--}}
                         {{--                        COLLEGE NO CHECKED SELECTION COLUMNS START--}}
                     </div>
                     <div class="row" id="noCollege" style="display: none">
-                        <div class="col-sm-12 form-group">
+                        <div class="col-sm-12 form-group {{$errors->has('user_past_info')?'has-error':''}}">
                             <label for="enterCollege">Enter your previous college Name</label>
                             <input type="text" class="form-control" name="user_past_info" id="exampleInputUsername1" autocomplete="off">
+                            <br>{!! $errors->first('user_past_info', '<div class="alert alert-danger">:message</div>') !!}
                         </div>
 
-                        <div class="col-sm-12 form-group">
+                        <div class="col-sm-12 form-group {{$errors->has('user_current_info')?'has-error':''}}">
                             <label for="exampleInputUsername1">Enter your current job Title</label>
                             <input type="text" class="form-control" name="user_current_info" id="exampleInputUsername1" autocomplete="off" placeholder="Sales,Administrative,etc.">
+                            <br>{!! $errors->first('user_current_info', '<div class="alert alert-danger">:message</div>') !!}
                         </div>
                     </div>
                     {{--                        COLLEGE NO CHECKED SELECTION COLUMNS FINISH--}}
                     {{--                        GENDER SELECTION COLUMNS START--}}
                     <div class="row">
-                        <div class="col-sm-12 form-group">
+                        <div class="col-sm-12 form-group {{$errors->has('gender')?'has-error':''}}">
                             <label for="raduoButtonGender">Gender:</label>
                         </div>
 
@@ -120,13 +123,14 @@
                                     <option value="Female" name="FeMale">Female</option>
                                     <option value="Doesn't want to specify" name="Doesn't want to specify">Doesn't want to specify</option>
 
-                                </select>
+                                </select><br>
+                                {!! $errors->first('gender', '<div class="alert alert-danger">:message</div>') !!}
                             </div>
                         </div>
                     {{--                        GENDER SELECTION COLUMNS Finish--}}
                     {{--                        TERMS and CONDITION SELECTION COLUMNS START--}}
                     <div class="row">
-                        <div class="col-sm-12 form-group">
+                        <div class="col-sm-12 form-group {{$errors->has('u_accept')?'has-error':''}}">
 
                             <div class="form-check form-check-inline">
                                 <label class="form-check-label">
@@ -134,6 +138,7 @@
                             I accept,
                                 </label>
                             </div>
+                            {!! $errors->first('u_accept', '<div class="alert alert-danger">:message</div>') !!}
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary mr-2">Submit</button>

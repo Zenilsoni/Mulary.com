@@ -11,6 +11,6 @@ class RegisterController extends Controller
     function insert(BasicInfoValidateRequest $request)
     {
         $validate = $request->validated();
-    echo "Here".$validate;
+
     }
 }

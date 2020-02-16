@@ -30,6 +30,9 @@ class BasicInfoValidateRequest extends FormRequest
             'u_lname'=>'required',
             'u_email'=>'required|unique:registrations,email|email',
             'user_type'=>'required',
+            'user_type_college'=>'required_if:user_type,yes',
+            'user_past_info'=>'required_if:user_type,no',
+            'user_current_info'=>'required_if:user_type,no',
             'gender'=>'required',
             'u_accept'=>'required'
 
@@ -49,7 +52,20 @@ class BasicInfoValidateRequest extends FormRequest
             'u_email.required' => 'Email is required!',
             'u_email.unique' => 'Email already taken',
 
-            'user_type.required'=> 'Please choose'
+            'user_type.required'=> 'Please choose',
+
+            'user_type_college.required_if'=>'Selection required',
+
+            'user_past_info.required_if'=>'College name required',
+
+            'user_current_info.required_if'=>'Job Title required',
+
+            'gender.required' => 'Selection required!',
+
+            'u_accept.required' => 'Checkbox required',
+
+
+
         ];
     }
 }
