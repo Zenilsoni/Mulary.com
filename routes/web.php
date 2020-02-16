@@ -12,6 +12,7 @@
 */
 
 Route::get('/', function () {
+
     return view('dashboard');
 });
 
@@ -19,8 +20,14 @@ Route::get('/admin', function () {
     return view('adminPages.admindashboard');
 });
 
+Route::get('/admin', function () {
+   return view('adminPages.admindashboard');
+
+});
+
 Route::group(['prefix' => 'user'], function(){
     Route::get('allusers', 'UserViewController@getUser');
+
     Route::get('approved', 'UserViewController@getApprovedUser');
     Route::get('compose', function () { return view('userPages.email.compose'); });
 });
@@ -35,6 +42,24 @@ Route::group(['prefix' => 'email'], function(){
 Route::group(['prefix' => 'apps'], function(){
     Route::get('chat', function () { return view('userPages.apps.chat'); });
     Route::get('calendar', function () { return view('userPages.apps.calendar'); });
+    Route::get('disapproved', 'UserViewController@getDisApprovedUser');
+    Route::get('inprogress', 'UserViewController@getInprogressUser');
+   Route::get('approved', 'UserViewController@getApprovedUser');
+   Route::get('compose', function () { return view('userPages.email.compose'); });
+});
+
+Route::post('/mailer', 'PhpMailerController@sendEmail');
+
+Route::group(['prefix' => 'email'], function(){
+   Route::get('inbox', function () { return view('userPages.email.inbox'); });
+   Route::get('read', function () { return view('userPages.email.read'); });
+   Route::get('compose', function () { return view('userPages.email.compose'); });
+});
+
+Route::group(['prefix' => 'apps'], function(){
+   Route::get('chat', function () { return view('userPages.apps.chat'); });
+   Route::get('calendar', function () { return view('userPages.apps.calendar'); });
+
 });
 
 //form get
@@ -44,6 +69,7 @@ Route::get('/signup', 'college\getCollegeController@getcolleges');
 Route::post('/signup', 'Authorization\RegisterController@insert');
 
 Route::group(['prefix' => 'ui-components'], function(){
+
     Route::get('alerts', function () { return view('userPages.ui-components.alerts'); });
     Route::get('badges', function () { return view('userPages.ui-components.badges'); });
     Route::get('breadcrumbs', function () { return view('userPages.ui-components.breadcrumbs'); });
@@ -122,9 +148,14 @@ Route::group(['prefix' => 'error'], function(){
 Route::get('/clear-cache', function() {
     Artisan::call('cache:clear');
     return "Cache is cleared";
+
 });
 
 // 404 for undefined routes
 Route::any('/{page?}',function(){
+
     return View::make('userPages.error.404');
+
+   return View::make('userPages.error.404');
+
 })->where('page','.*');

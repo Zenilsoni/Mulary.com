@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('layout.master2')
 
 @section('content')
 <nav class="page-breadcrumb">
@@ -15,6 +15,7 @@
         <h6 class="card-title">All Users Data</h6>
         <p class="card-description">Add class <code>.table-bordered</code></p>
         <div class="table-responsive pt-3">
+          <form action="" method="POST">
           <table class="table table-bordered">
             <thead>
               <tr>
@@ -54,11 +55,15 @@
                     <td>{{ $user->firstname . " ". $user->lastname }}</td>
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->name }}</td>
-                    <td>{{ $user->gender }}</td>                    
+                    <td>{{ $user->gender }}</td>  
+                    <td>
+                      
+                    </td>                  
                 </tr>
               @endforeach           
             </tbody>
           </table>
+          </form>
         </div>
       </div>
     </div>

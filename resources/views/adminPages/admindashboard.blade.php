@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('layout.master2')
 
 @push('plugin-styles')
   {!! Html::style('/assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css') !!}
@@ -43,9 +43,9 @@
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                   <a class="dropdown-item d-flex align-items-center" href="/user/allusers"><i data-feather="eye" class="icon-sm mr-2"></i> <span class="">Signed Up</span></a>
-                  <a class="dropdown-item d-flex align-items-center" href="#"><i data-feather="edit-2" class="icon-sm mr-2"></i> <span class="">In Progress</span></a>
+                  <a class="dropdown-item d-flex align-items-center" href="/user/inprogress"><i data-feather="edit-2" class="icon-sm mr-2"></i> <span class="">In Progress</span></a>
                   <a class="dropdown-item d-flex align-items-center" href="/user/approved"><i data-feather="trash" class="icon-sm mr-2"></i> <span class="">Approved</span></a>
-                  <a class="dropdown-item d-flex align-items-center" href="#"><i data-feather="trash" class="icon-sm mr-2"></i> <span class="">Not Approved</span></a>
+                  <a class="dropdown-item d-flex align-items-center" href="/user/disapproved"><i data-feather="trash" class="icon-sm mr-2"></i> <span class="">Not Approved</span></a>
                   <a class="dropdown-item d-flex align-items-center" href="#"><i data-feather="printer" class="icon-sm mr-2"></i> <span class="">Print</span></a>
                   <a class="dropdown-item d-flex align-items-center" href="#"><i data-feather="download" class="icon-sm mr-2"></i> <span class="">Download</span></a>
                 </div>
