@@ -18,8 +18,8 @@
               <h5 class="text-muted font-weight-normal mb-4">Welcome back! Log in to your account.</h5>
               <form class="forms-sample">
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Email address</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                  <label for="exampleInputEmail1">Enter User Name orEmail address</label>
+                  <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Email or User Name">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword1">Password</label>
@@ -38,7 +38,7 @@
                     Login with twitter
                   </button>
                 </div>
-                <a href="{{ url('/auth/register') }}" class="d-block mt-3 text-muted">Not a user? Sign up</a>
+                <a href="{{}}" class="d-block mt-3 text-muted">Not a user? Sign up</a>
               </form>
             </div>
           </div>

@@ -36,7 +36,13 @@ Route::group(['prefix' => 'apps'], function(){
     Route::get('chat', function () { return view('userPages.apps.chat'); });
     Route::get('calendar', function () { return view('userPages.apps.calendar'); });
 });
-Route::get('/signup', function () { return view('userPages.forms.signup'); });
+
+//form get
+Route::get('/signup', 'college\getCollegeController@getcolleges');
+
+//form validation post
+Route::post('/signup', 'Authorization\RegisterController@insert');
+
 Route::group(['prefix' => 'ui-components'], function(){
     Route::get('alerts', function () { return view('userPages.ui-components.alerts'); });
     Route::get('badges', function () { return view('userPages.ui-components.badges'); });
