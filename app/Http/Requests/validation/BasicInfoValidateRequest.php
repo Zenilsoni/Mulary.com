@@ -3,6 +3,7 @@
 namespace App\Http\Requests\validation;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class BasicInfoValidateRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class BasicInfoValidateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,10 +25,10 @@ class BasicInfoValidateRequest extends FormRequest
     public function rules()
     {
         return [
-            'u_name'=>'required|min:5',
-            'u_fname'=>'required|min:5',
-            'l_name'=>'required|min:5',
-            'u_email'=>'required|email',
+            'u_name'=>'required|min:5|unique:registrations,username',
+            'u_fname'=>'required',
+            'u_lname'=>'required',
+            'u_email'=>'required|unique:registrations,email|email',
             'user_type'=>'required',
             'gender'=>'required',
             'u_accept'=>'required'
@@ -38,9 +39,17 @@ class BasicInfoValidateRequest extends FormRequest
     public function messages()
     {
         return [
-            'u_name.required' => 'User Name is required!',
-            'email.required' => 'Email is required!',
-            'password.required' => 'Password is required!'
+            'u_name.required' => 'Username is required!',
+            'u_name.min' => 'Username must be atleast 5 characters',
+            'u_name.unique' => 'Username already taken',
+
+            'u_fname.required' => 'Firstname is required!',
+            'u_lname.required' => 'Lastname is required!',
+
+            'u_email.required' => 'Email is required!',
+            'u_email.unique' => 'Email already taken',
+
+            'user_type.required'=> 'Please choose'
         ];
     }
 }
