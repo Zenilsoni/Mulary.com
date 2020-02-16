@@ -22,9 +22,11 @@ Route::get('/admin', function () {
 Route::group(['prefix' => 'user'], function(){
     Route::get('allusers', 'UserViewController@getUser');
     Route::get('approved', 'UserViewController@getApprovedUser');
-    Route::get('compose', function () { return view('userPages.email.compose'); });
+    Route::get('disapproved', 'UserViewController@getDisApprovedUser');
+    Route::get('inprogress', 'UserViewController@getInprogressUser');
 });
 
+Route::post('/mailer', 'PhpMailerController@sendEmail');
 
 Route::group(['prefix' => 'email'], function(){
     Route::get('inbox', function () { return view('userPages.email.inbox'); });

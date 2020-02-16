@@ -1,10 +1,10 @@
-@extends('layout.master')
+@extends('layout.master2')
 
 @section('content')
 <nav class="page-breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="#">All Users</a></li>
-    <li class="breadcrumb-item active" aria-current="page">User Signup Table</li>
+    <li class="breadcrumb-item active" aria-current="page">All Pending Users Data</li>
   </ol>
 </nav>
 
@@ -12,9 +12,9 @@
   <div class="col-md-12 grid-margin stretch-card">
     <div class="card">
       <div class="card-body">
-        <h6 class="card-title">All Users Data</h6>
-        <p class="card-description">Add class <code>.table-bordered</code></p>
         <div class="table-responsive pt-3">
+          <form method="post" action="/mailer">
+            @csrf
           <table class="table table-bordered">
             <thead>
               <tr>
@@ -54,11 +54,16 @@
                     <td>{{ $user->firstname . " ". $user->lastname }}</td>
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->name }}</td>
-                    <td>{{ $user->gender }}</td>                    
+                    <td>{{ $user->gender }}</td>         
+                    <td>
+                      <button type="submit" name="approve" value="{{ $user->signup_id }}" class="btn btn-success" >Approve</button>
+                      <button type="button" name="disapprove" value="{{ $user->signup_id }}" class="btn btn-danger">DisApprove</button>
+                    </td>
                 </tr>
               @endforeach           
             </tbody>
           </table>
+          </form>
         </div>
       </div>
     </div>
