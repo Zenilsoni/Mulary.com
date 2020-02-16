@@ -20,42 +20,45 @@
                     <div class="row">
                         <div class="col-sm-12 form-group {{$errors->has('u_name')?'has-error':''}}">
                             <label for="exampleInputUsername1">Username</label>
-                            <input type="text" class="form-control" id="exampleInputUsername1" name="u_name" autocomplete="off" placeholder="Username">
-                            {!! $errors->first('u_name', '<p class="help-block">:message</p>') !!}
+                            <input type="text" class="form-control" id="exampleInputUsername1" name="u_name" autocomplete="off" placeholder="Username"><br>
+                            {!! $errors->first('u_name', '<div class="row-sm-3 alert alert-danger">:message</div>') !!}
                         </div>
                     </div>
                     {{--                    USERNAME COLUMN FINISH--}}
                     {{--                        FIRST NAME AND LAST NAME COLUMNS START--}}
                     <div class="row">
-                        <div class="col-sm-6">
-                            <div class="form-group">
+                        <div class="col-sm-6 form-group {{$errors->has('u_fname')?'has-error':''}}">
+
                                 <label class="control-label">First Name</label>
-                                <input type="text" class="form-control" name="u_fname" placeholder="Enter first name">
-                            </div>
+                                <input type="text" class="form-control" name="u_fname" placeholder="First Name"><br>
+                            {!! $errors->first('u_fname', '<div class="alert alert-danger">:message</div>') !!}
+
+
                         </div><!-- Col of last name -->
-                        <div class="col-sm-6">
-                            <div class="form-group">
+                        <div class="col-sm-6 form-group {{$errors->has('u_lname')?'has-error':''}}">
+
                                 <label class="control-label">Last Name</label>
-                                <input type="text" class="form-control" name="u_lname" placeholder="Enter last name">
-                            </div>
+                                <input type="text" class="form-control" name="u_lname" placeholder="Last Name"><br>
+                            {!! $errors->first('u_lname', '<div class="alert alert-danger">:message</div>') !!}
                         </div>
                     </div>
                     {{--                        FIRST NAME AND LAST NAME COLUMNS FINISH--}}
                     {{--                        EMAIL NAME COLUMNS START--}}
                     <div class="row">
-                        <div class="col-sm-12 form-group">
+                        <div class="col-sm-12 form-group {{$errors->has('u_email')?'has-error':''}}">
                             <label for="exampleInputEmail">Email</label>
-                            <input type="email" class="form-control" name="u_email" id="exampleInputEmail" autocomplete="off" placeholder="Email">
+                            <input type="email" class="form-control" name="u_email" id="exampleInputEmail" autocomplete="off" placeholder="Email"><br>
+                        {!! $errors->first('u_email', '<div class="alert alert-danger">:message</div>') !!}
                         </div>
                     </div>
                     {{--                        EMAIL NAME COLUMNS FINISh--}}
                     {{--                        COLLEGE RADIO SELECTION COLUMNS START--}}
                     <div class="row">
-                        <div class="col-sm-12 form-group">
+                        <div class="col-sm-12 form-group  {{$errors->has('user_type')?'has-error':''}}">
                             <label for="checkboxEnrollment">Are you currently enrolled in College or Universtiy?</label>
 
                             <div class="col-sm-6 form-group">
-                                <div class="form-check">
+                                <div class="form-check form-group">
                                     <label class="form-check-label">
                                         <input type="radio" class="form-check-input" name="user_type" id="optionsRadios1" value="yes" onclick="radioFunction()">
                                         Yes
@@ -67,7 +70,10 @@
                                         No
                                     </label>
                                 </div>
+
                             </div>
+                            <br>
+                            {!! $errors->first('user_type', '<div class="alert alert-danger">:message</div>') !!}
                         </div>
                     </div>
                     {{--                        COLLEGE RADIO SELECTION COLUMNS START--}}
