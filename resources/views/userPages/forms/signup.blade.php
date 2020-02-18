@@ -183,7 +183,7 @@
 
                             <div class="form-check form-check-inline">
                                 <label class="form-check-label">
-                                    <input type="checkbox" class="form-check-input" name="u_accept">
+                                    <input type="checkbox" class="form-check-input" name="u_accept" value="1">
                             I accept,
                                 </label>
                             </div>
@@ -204,7 +204,6 @@
     $(document).ready(function() {
         $("input[type='radio']").change(function() {
             var radioValStu= $(this).val();
-            console.log(radioValStu);
             if(radioValStu=="yes")
             {
                 $("#yesStudent").css("display","block");
