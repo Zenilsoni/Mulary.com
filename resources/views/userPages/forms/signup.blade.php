@@ -55,7 +55,7 @@
                     {{--                        COLLEGE RADIO SELECTION COLUMNS START--}}
                     <div class="row">
                         <div class="col-sm-12 form-group  {{$errors->has('user_type')?'has-error':''}}">
-                            <label for="checkboxEnrollment">Are you currently enrolled in College or Universtiy?</label>
+                            <label for="checkboxEnrollment">Are you Student?</label>
 
                             <div class="col-sm-6 form-group">
                                 <div class="form-check form-group" >
