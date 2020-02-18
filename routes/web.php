@@ -40,22 +40,6 @@ Route::group(['prefix' => 'userPost'], function(){
 
 });
 
-Route::group(['prefix' => 'email'], function(){
-    Route::get('inbox', function () { return view('userPages.email.inbox'); });
-    Route::get('read', function () { return view('userPages.email.read'); });
-    Route::get('compose', function () { return view('userPages.email.compose'); });
-});
-
-
-Route::group(['prefix' => 'apps'], function(){
-    Route::get('chat', function () { return view('userPages.apps.chat'); });
-    Route::get('calendar', function () { return view('userPages.apps.calendar'); });
-    Route::get('disapproved', 'UserViewController@getDisApprovedUser');
-    Route::get('inprogress', 'UserViewController@getInprogressUser');
-   Route::get('approved', 'UserViewController@getApprovedUser');
-   Route::get('compose', function () { return view('userPages.email.compose'); });
-
-});
 
 Route::get('/admin', function () {
    return view('adminPages.admindashboard');
