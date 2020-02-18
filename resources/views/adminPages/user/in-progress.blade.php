@@ -56,8 +56,10 @@
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->gender }}</td>         
                     <td>
-                      <button type="submit" name="approve" value="{{ $user->signup_id }}" class="btn btn-success" >Approve</button>
-                      <button type="button" name="disapprove" value="{{ $user->signup_id }}" class="btn btn-danger">DisApprove</button>
+                      <input type="submit" value="Waiting" class="btn btn-warning" name="waiting">
+                      <input type="submit" value="Approve" class="btn btn-success" name="approve"> 
+                      <input type="text" value="{{ $user->signup_id }}" name="user_id" hidden>
+                      <input type="submit" value="Dispprove" class="btn btn-danger" name="disapprove">                      
                     </td>
                 </tr>
               @endforeach           

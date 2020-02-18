@@ -17,24 +17,59 @@ Route::get('/', function () {
     return view('dashboard');
 });
 
-Route::get('/admin', function () {
-    return view('adminPages.admindashboard');
-    return view('dashboard');
+// Route::get('/admin', function () {
+//     return view('adminPages.admindashboard');
+//     return view('dashboard');
 
-});
+// });
 
 Route::get('/admin', function () {
    return view('adminPages.admindashboard');
 
 });
 
-Route::group(['prefix' => 'user'], function(){
+Route::group(['prefix' => 'admin/user/'], function(){
     Route::get('allusers', 'UserViewController@getUser');
-
+    Route::get('disapproved', 'UserViewController@getDisApprovedUser');
+    Route::get('inprogress', 'UserViewController@getInprogressUser');
     Route::get('approved', 'UserViewController@getApprovedUser');
     Route::get('compose', function () { return view('userPages.email.compose'); });
 });
 
+Route::get('hello/send/email', 'MailerController@mail');
+// Route::group(['prefix' => 'apps'], function(){
+//     Route::get('chat', function () { return view('userPages.apps.chat'); });
+//     Route::get('calendar', function () { return view('userPages.apps.calendar'); });
+//     //Route::get('disapproved', 'UserViewController@getDisApprovedUser');
+//    // Route::get('inprogress', 'UserViewController@getInprogressUser');
+//   // Route::get('approved', 'UserViewController@getApprovedUser');
+//    Route::get('compose', function () { return view('userPages.email.compose'); });
+
+// });
+
+// Route::get('/admin', function () {
+//    return view('adminPages.admindashboard');
+// });
+
+
+// Route::group(['prefix' => 'user'], function(){
+//     Route::get('allusers', 'UserViewController@getUser');
+//     Route::get('disapproved', 'UserViewController@getDisApprovedUser');
+//     Route::get('inprogress', 'UserViewController@getInprogressUser');
+//     Route::get('approved', 'UserViewController@getApprovedUser');
+//     Route::get('compose', function () { return view('userPages.email.compose'); });
+// });
+
+
+//     Route::get('approved', 'UserViewController@getApprovedUser');
+//     Route::get('compose', function () { return view('userPages.email.compose'); });
+// });
+
+// Route::group(['prefix' => 'email'], function(){
+//     Route::get('inbox', function () { return view('userPages.email.inbox'); });
+//     Route::get('read', function () { return view('userPages.email.read'); });
+//     Route::get('compose', function () { return view('userPages.email.compose'); });
+// });
 
 Route::group(['prefix' => 'email'], function(){
     Route::get('inbox', function () { return view('userPages.email.inbox'); });
@@ -42,57 +77,19 @@ Route::group(['prefix' => 'email'], function(){
     Route::get('compose', function () { return view('userPages.email.compose'); });
 });
 
-Route::group(['prefix' => 'apps'], function(){
-    Route::get('chat', function () { return view('userPages.apps.chat'); });
-    Route::get('calendar', function () { return view('userPages.apps.calendar'); });
-    Route::get('disapproved', 'UserViewController@getDisApprovedUser');
-    Route::get('inprogress', 'UserViewController@getInprogressUser');
-   Route::get('approved', 'UserViewController@getApprovedUser');
-   Route::get('compose', function () { return view('userPages.email.compose'); });
-
-});
-
-Route::get('/admin', function () {
-   return view('adminPages.admindashboard');
-});
-
-
-Route::group(['prefix' => 'user'], function(){
-    Route::get('allusers', 'UserViewController@getUser');
-
-
-    Route::get('approved', 'UserViewController@getApprovedUser');
-    Route::get('compose', function () { return view('userPages.email.compose'); });
-});
-
-
-Route::group(['prefix' => 'email'], function(){
-    Route::get('inbox', function () { return view('userPages.email.inbox'); });
-    Route::get('read', function () { return view('userPages.email.read'); });
-    Route::get('compose', function () { return view('userPages.email.compose'); });
-});
-
-Route::group(['prefix' => 'apps'], function(){
-    Route::get('chat', function () { return view('userPages.apps.chat'); });
-    Route::get('calendar', function () { return view('userPages.apps.calendar'); });
-    Route::get('disapproved', 'UserViewController@getDisApprovedUser');
-    Route::get('inprogress', 'UserViewController@getInprogressUser');
-   Route::get('approved', 'UserViewController@getApprovedUser');
-   Route::get('compose', function () { return view('userPages.email.compose'); });
-});
 
 Route::post('/mailer', 'PhpMailerController@sendEmail');
 
-Route::group(['prefix' => 'email'], function(){
-   Route::get('inbox', function () { return view('userPages.email.inbox'); });
-   Route::get('read', function () { return view('userPages.email.read'); });
-   Route::get('compose', function () { return view('userPages.email.compose'); });
-});
+// Route::group(['prefix' => 'email'], function(){
+//    Route::get('inbox', function () { return view('userPages.email.inbox'); });
+//    Route::get('read', function () { return view('userPages.email.read'); });
+//    Route::get('compose', function () { return view('userPages.email.compose'); });
+// });
 
-Route::group(['prefix' => 'apps'], function(){
-   Route::get('chat', function () { return view('userPages.apps.chat'); });
-   Route::get('calendar', function () { return view('userPages.apps.calendar'); });
-});
+// Route::group(['prefix' => 'apps'], function(){
+//    Route::get('chat', function () { return view('userPages.apps.chat'); });
+//    Route::get('calendar', function () { return view('userPages.apps.calendar'); });
+// });
 
 //form get
 Route::get('/signup', 'college\getCollegeController@getcolleges');

@@ -15,7 +15,7 @@ class PhpMailerController extends Controller
   	if(Request::isMethod('post')) {
 
       //  include 'C:\xampp\php\pear\PEAR';
-      require __DIR__.'\..\vendor\autoload.php';			// load Composer's autoloader
+      require '\vendor\autoload.php';			// load Composer's autoloader
 
         $mail = new PHPMailer(true);                            // Passing `true` enables exceptions
 
