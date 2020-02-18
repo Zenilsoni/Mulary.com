@@ -12,8 +12,6 @@
 */
 
 Route::get('/', function () {
-
-
     return view('dashboard');
 });
 
@@ -45,20 +43,13 @@ Route::get('hello/send/email', 'MailerController@mail');
 //   // Route::get('approved', 'UserViewController@getApprovedUser');
 //    Route::get('compose', function () { return view('userPages.email.compose'); });
 
+
 // });
 
 // Route::get('/admin', function () {
 //    return view('adminPages.admindashboard');
 // });
 
-
-// Route::group(['prefix' => 'user'], function(){
-//     Route::get('allusers', 'UserViewController@getUser');
-//     Route::get('disapproved', 'UserViewController@getDisApprovedUser');
-//     Route::get('inprogress', 'UserViewController@getInprogressUser');
-//     Route::get('approved', 'UserViewController@getApprovedUser');
-//     Route::get('compose', function () { return view('userPages.email.compose'); });
-// });
 
 
 //     Route::get('approved', 'UserViewController@getApprovedUser');
