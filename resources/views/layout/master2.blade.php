@@ -30,7 +30,7 @@
   {!! Html::script('/assets/js/spinner.js') !!}
 
   <div class="main-wrapper" id="app">
-    @include('layout.sidebar')
+    @include('layout.adminsidebar')
     <div class="page-wrapper">
       @include('layout.header')
       <div class="page-content">
