@@ -6,6 +6,7 @@
 
 @section('content')
 
+
     <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
         <div>
             <h4 class="mb-3 mb-md-0">Welcome to Dashboard</h4>
@@ -29,23 +30,21 @@
                     <div class="row align-items-start mb-2">
                         <div class="col-md-7">
                             <a href="/userPost/facebook">
-                            <button type="button" id="facebook" class="btn btn-primary btn-icon-text mb-1 mb-md-0">
-                                <i class="btn-icon-prepend" data-feather="facebook"></i>
-                                Facebook
-                            </button>
+                                <button type="button" id="facebook" class="btn btn-primary btn-icon-text mb-1 mb-md-0">
+                                    <i class="btn-icon-prepend" data-feather="facebook"></i>
+                                    Facebook
+                                </button>
                             </a>
-                            <a href="/userPost/instagram">
                             <button type="button" id="instagram" class="btn btn-danger btn-icon-text mb-1 mb-md-0">
                                 <i class="btn-icon-prepend" data-feather="instagram"></i>
                                 Instagram
                             </button>
-                            </a>
                         </div>
                     </div>
 
 
-                @if(isset($facebookPosts))
-                    <div id="facebookDisplay">
+
+                        <div id="facebookDisplay">
                         @foreach($facebookPosts as $facebookPost)
                             <div class="myslides" id="row{{$facebookPost->add_id}}?>" style="display: none;">
                                 <div class="row">
@@ -61,7 +60,7 @@
                                                 <p>{{ $facebookPost->description }}</p>
                                             </div>
                                             <div style="margin: 10px;">
-                                                <button class="btn btn-success btn-lg" onclick="plusSlides(1);">Post Now</button>
+                                                <button class="btn btn-success btn-lg" onclick="plusSlides(1);">Post now for $5.00</button>
                                             </div>
                                             <div style="margin: 10px;">
                                                 <button class="btn btn-danger btn-lg" onclick="plusSlides(1);">Ignore</button>
@@ -71,39 +70,7 @@
                                 </div>
                             </div>
                         @endforeach
-                    </div>
-                @endif
-
-
-                @if(isset($instgramPosts))
-                    <div id="instagramDisplay">
-                        @foreach($instgramPosts as $instgramPost)
-                            <div class="myslides" id="row{{$instgramPost->add_id}}?>" style="display: none;">
-                                <div class="row">
-                                    <div class="col-md-6 col-xl-6">
-                                        <div class="card-body">
-                                            <img class="img-fluid" src="{{ $instgramPost->image }}" alt="">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6 col-xl-6">
-                                        <div class="card-body">
-                                            <div class="description">
-                                                <p>{{ $instgramPost->description }}</p>
-                                            </div>
-                                            <div style="margin: 10px;">
-                                                <button class="btn btn-success btn-lg" onclick="plusSlides(1);">Post Now</button>
-                                            </div>
-                                            <div style="margin: 10px;">
-                                                <button class="btn btn-danger btn-lg" onclick="plusSlides(1);">Ignore</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                @endif
+                        </div>
 
 
 
@@ -140,7 +107,7 @@
 
     <script>
         function postFunction() {
-            var facebook= document.getElementById("facebook").value();
+            var facebook= document.getElementById("facebook").value;
             document.getElementById("facebookDisplay").style.display=facebook=="facebook" ?"block":"none";
             var instagram= document.getElementById("instagram");
             document.getElementById("instagramDisplay").style.display=instagram.click()?"block":"none";

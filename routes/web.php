@@ -12,8 +12,6 @@
 */
 
 Route::get('/', function () {
-
-
     return view('dashboard');
 });
 
@@ -36,11 +34,18 @@ Route::group(['prefix' => 'user'], function(){
 });
 
 
+Route::group(['prefix' => 'userPost'], function(){
+    Route::get('facebook', 'UserPostsController@getFacebookPosts');
+    Route::get('instagram', 'UserPostsController@getInstagramPosts');
+
+});
+
 Route::group(['prefix' => 'email'], function(){
     Route::get('inbox', function () { return view('userPages.email.inbox'); });
     Route::get('read', function () { return view('userPages.email.read'); });
     Route::get('compose', function () { return view('userPages.email.compose'); });
 });
+
 
 Route::group(['prefix' => 'apps'], function(){
     Route::get('chat', function () { return view('userPages.apps.chat'); });
