@@ -86,7 +86,7 @@ Route::post('/mailer', 'PhpMailerController@sendEmail');
 Route::get('/signup', 'college\getCollegeController@getcolleges');
 
 //form validation post
-Route::post('/signup', 'Authorization\RegisterController@timepass');
+Route::post('/signup', 'Authorization\RegisterController@insert');
 
 
 //Route::group(['prefix' => 'ui-components'], function() {

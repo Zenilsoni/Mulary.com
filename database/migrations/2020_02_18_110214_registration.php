@@ -16,14 +16,15 @@ class Registration extends Migration
         //
         Schema::create('registrations', function (Blueprint $table) {
             $table->bigIncrements('registration_id');
-            $table->text('email');
-            $table->text('firstname');
-            $table->text('lastname');
-            $table->text('contact');
-            $table->bigInteger('school_id');
-            $table->text('occupations');
-            $table->boolean('terms');
-            $table->text('status');
+            $table->text('email')->nullable(false);
+            $table->text('firstname')->nullable(false);
+            $table->text('lastname')->nullable(false);
+            $table->text('contact')->nullable(false);
+            $table->bigInteger('school_id')->nullable(false);
+            $table->text('previous_college')->nullable(true);
+            $table->text('occupations')->nullable();
+            $table->boolean('terms')->nullable(false);
+            $table->text('status')->nullable(true);
         });
     }
 
