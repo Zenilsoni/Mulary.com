@@ -23,6 +23,8 @@
   <!-- end common css -->
 
   @stack('style')
+{{--jquey--}}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 </head>
 <body data-base-url="{{url('/')}}">

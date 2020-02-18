@@ -10,7 +10,7 @@ class getCollegeController extends Controller
 {
     function getColleges()
     {
-$colleges = FecthCollegesModel::all();
-return view('userPages.forms.signup',['colleges'=>$colleges]);
+//$colleges = FecthCollegesModel::all();
+return view('userPages.forms.signup');
     }
 }

@@ -24,19 +24,19 @@ class BasicInfoValidateRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'u_name'=>'required|min:5|unique:registrations,username',
-            'u_fname'=>'required',
-            'u_lname'=>'required',
-            'u_email'=>'required|unique:registrations,email|email',
-            'user_type'=>'required',
-            'user_type_college'=>'required_if:user_type,yes',
-            'user_past_info'=>'required_if:user_type,no',
-            'user_current_info'=>'required_if:user_type,no',
-            'gender'=>'required',
-            'u_accept'=>'required'
-
-        ];
+//        return [
+//            'u_fname'=>'required',
+//            'u_lname'=>'required',
+//            'u_email'=>'required|unique:registrations,email|email',
+//
+//            'user_type'=>'required',
+//            'user_type_college'=>'required_if:user_type,yes',
+//            'user_past_info'=>'required_if:user_type,no',
+//            'user_current_info'=>'required_if:user_type,no',
+//            'gender'=>'required',
+//            'u_accept'=>'required'
+//
+//        ];
 
     }
     public function messages()
