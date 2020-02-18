@@ -15,16 +15,17 @@
                 <h6 class="card-title">Basic Form</h6>
                 <form class="forms-sample" method="POST" action="{{url('/signup')}}">
                         {{csrf_field()}}
-                    {{--                    USERNAME COLUMN START--}}
+{{--                    --}}{{--                    USERNAME COLUMN START--}}
 
-                    <div class="row">
-                        <div class="col-sm-12 form-group {{$errors->has('u_name')?'has-error':''}}">
-                            <label for="exampleInputUsername1">Username</label>
-                            <input type="text" class="form-control" id="exampleInputUsername1" name="u_name" autocomplete="off" placeholder="Username"><br>
-                            {!! $errors->first('u_name', '<div class="row-sm-3 alert alert-danger">:message</div>') !!}
-                        </div>
-                    </div>
-                    {{--                    USERNAME COLUMN FINISH--}}
+{{--                    <div class="row">--}}
+{{--                        <div class="col-sm-12 form-group {{$errors->has('u_name')?'has-error':''}}">--}}
+{{--                            <label for="exampleInputUsername1">Username</label>--}}
+{{--                            <input type="text" class="form-control" id="exampleInputUsername1" name="u_name" autocomplete="off" placeholder="Username"><br>--}}
+{{--                            {!! $errors->first('u_name', '<div class="row-sm-3 alert alert-danger">:message</div>') !!}--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    --}}{{--                    USERNAME COLUMN FINISH--}}
+{{-----------------------------------------------------------------------------------------------------------------------------------------------------------------}}
                     {{--                        FIRST NAME AND LAST NAME COLUMNS START--}}
                     <div class="row">
                         <div class="col-sm-6 form-group {{$errors->has('u_fname')?'has-error':''}}">
@@ -32,7 +33,6 @@
                                 <label class="control-label">First Name</label>
                                 <input type="text" class="form-control" name="u_fname" placeholder="First Name"><br>
                             {!! $errors->first('u_fname', '<div class="alert alert-danger">:message</div>') !!}
-
 
                         </div><!-- Col of last name -->
                         <div class="col-sm-6 form-group {{$errors->has('u_lname')?'has-error':''}}">
@@ -43,16 +43,24 @@
                         </div>
                     </div>
                     {{--                        FIRST NAME AND LAST NAME COLUMNS FINISH--}}
+{{-----------------------------------------------------------------------------------------------------------------------------------------------------------------}}
                     {{--                        EMAIL NAME COLUMNS START--}}
                     <div class="row">
-                        <div class="col-sm-12 form-group {{$errors->has('u_email')?'has-error':''}}">
+                        <div class="col-sm-6 form-group {{$errors->has('u_email')?'has-error':''}}">
                             <label for="exampleInputEmail">Email</label>
-                            <input type="email" class="form-control" name="u_email" id="exampleInputEmail" autocomplete="off" placeholder="Email"><br>
+                            <input type="email" class="form-control" name="u_email" id="u_email" autocomplete="off" placeholder="Email"><br>
                         {!! $errors->first('u_email', '<div class="alert alert-danger">:message</div>') !!}
+                        </div>
+                        {{--                        EMAIL NAME COLUMNS FINISh--}}
+                        <div class="col-sm-6 form-group {{$errors->has('u_email')?'has-error':''}}">
+                            <label for="exampleInputEmail">Phone Number</label>
+                            <input type="tel" class="form-control" name="u_phone" id="u_phno" placeholder="123456789" maxlength="10"><br>
+                            {!! $errors->first('u_email', '<div class="alert alert-danger">:message</div>') !!}
                         </div>
                     </div>
                     {{--                        EMAIL NAME COLUMNS FINISh--}}
-                    {{--                        COLLEGE RADIO SELECTION COLUMNS START--}}
+{{-----------------------------------------------------------------------------------------------------------------------------------------------------------------}}
+                    {{--                        STUDENT Y/N RADIO SELECTION COLUMNS START--}}
                     <div class="row">
                         <div class="col-sm-12 form-group  {{$errors->has('user_type')?'has-error':''}}">
                             <label for="checkboxEnrollment">Are you Student?</label>
@@ -60,13 +68,13 @@
                             <div class="col-sm-6 form-group">
                                 <div class="form-check form-group" >
                                     <label class="form-check-label">
-                                        <input type="radio" class="form-check-input" name="user_type" id="optionsRadios1" value="yes" onclick="radioFunction()">
+                                        <input type="radio" class="form-check-input" name="user_type" id="student_type" value="yes" >
                                         Yes
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <label class="form-check-label">
-                                        <input type="radio" class="form-check-input" name="user_type" id="optionsRadios2" value="no" onclick="radioFunction()">
+                                        <input type="radio" class="form-check-input" name="user_type" id="student_type" value="no">
                                         No
                                     </label>
                                 </div>
@@ -76,27 +84,66 @@
                             {!! $errors->first('user_type', '<div class="alert alert-danger">:message</div>') !!}
                         </div>
                     </div>
-                    {{--                        COLLEGE RADIO SELECTION COLUMNS START--}}
-                    {{--                        COLLEGE YES CHECKED SELECTION COLUMNS START--}}
-                    <div class="row" id="yesCollege" style="display: none">
-                        <div class="col-sm-12 form-group {{$errors->has('user_type_college')?'has-error':''}}">
-                            <label for="dropDownCollegeContent">Please Select your college or university:</label>
+                    {{--                        STUDENT Y/N SELECTION ROW FINISH--}}
+{{-----------------------------------------------------------------------------------------------------------------------------------------------------------------}}
+                    {{--                        STUDENT YES CHECKED SELECTION ROW START--}}
+                    <div class="row" id="yesStudent" style="display: none">
+                        <div class="col-sm-12 form-group  {{$errors->has('user_type')?'has-error':''}}">
+                            <label for="checkboxEnrollment">What's your status?</label>
 
+                            <div class="col-sm-12 form-group">
+{{-----------------------------------------------------------------------------------------------------------------------------------------------------------------}}
+                                {{--                        COLLEGE RADIO SELECTION COLUMNS START--}}
+                                <div class="form-check form-group" >
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input" name="user_type" id="getStudentData" value="college" >
+                                        College
+                                    </label>
+                                        <select id="datacollege" style="display: none" class="col-sm-12 form-group">
+                                            <option>aaaa</option>
+                                            <option>bbb</option>
+                                        </select>
+                                </div>
+{{--                        COLLEGE RADIO SELECTION COLUMNS ENDS--}}
+{{-----------------------------------------------------------------------------------------------------------------------------------------------------------------}}
+{{--                        UNIVERSITY RADIO SELECTION COLUMNS START--}}
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input" name="user_type" id="getStudentData" value="university">
+                                        University
+                                    </label>
+                                        <select id="datauni" style="display: none" class="col-sm-12 form-group">
+                                            <option>aaaa</option>
+                                            <option>bbb</option>
+                                        </select>
+                                    </div>
+
+{{--                        UNIVERSITY RADIO SELECTION COLUMNS ENDS--}}
+{{-----------------------------------------------------------------------------------------------------------------------------------------------------------------}}
+{{--                        HIGH SCHOOL RADIO SELECTION COLUMNS START--}}
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input" name="user_type" id="getStudentData" value="highschool">
+                                        High School
+                                    </label>
+
+                                        <select  id="dataschool" style="display: none" class="col-sm-12 form-group">
+                                            <option>aaaa</option>
+                                            <option>bbb</option>
+                                        </select>
+                                </div>
+{{--                        HIGH SCHOOL RADIO SELECTION COLUMNS ENDS--}}
+{{-----------------------------------------------------------------------------------------------------------------------------------------------------------------}}
+                            </div>
+                            <br>
+                            {!! $errors->first('user_type', '<div class="alert alert-danger">:message</div>') !!}
                         </div>
-                        <div class="col-sm-12 form-group">
-                            <select class="form-control" name="user_type_college" id="exampleFormControlSelect1">
+                    </div>
+{{--                        STUDENT YES RADIO SELECTION ROW ENDS--}}
+{{-----------------------------------------------------------------------------------------------------------------------------------------------------------------}}
+{{--                        STUDENT NO CHECKED SELECTION COLUMNS START--}}
 
-                                <option selected disabled>Select your College</option>
-                                @foreach($colleges as $getCollege)
-                                <option value="{{$getCollege->id}}">{{$getCollege->name}}</option>
-                                @endforeach
-                            </select>
-                    </div>
-                        {!! $errors->first('user_type_college', '<div class="alert alert-danger">:message</div>') !!}
-                        {{--                        COLLEGE YES CHECKED SELECTION COLUMNS FINISH--}}
-                        {{--                        COLLEGE NO CHECKED SELECTION COLUMNS START--}}
-                    </div>
-                    <div class="row" id="noCollege" style="display: none">
+                    <div class="row" id="noStudent" style="display: none">
                         <div class="col-sm-12 form-group {{$errors->has('user_past_info')?'has-error':''}}">
                             <label for="enterCollege">Enter your previous college Name</label>
                             <input type="text" class="form-control" name="user_past_info" id="exampleInputUsername1" autocomplete="off">
@@ -109,7 +156,8 @@
                             <br>{!! $errors->first('user_current_info', '<div class="alert alert-danger">:message</div>') !!}
                         </div>
                     </div>
-                    {{--                        COLLEGE NO CHECKED SELECTION COLUMNS FINISH--}}
+                    {{--                        STUDENT NO CHECKED SELECTION ROW FINISH--}}
+{{-----------------------------------------------------------------------------------------------------------------------------------------------------------------}}
                     {{--                        GENDER SELECTION COLUMNS START--}}
                     <div class="row">
                         <div class="col-sm-12 form-group {{$errors->has('gender')?'has-error':''}}">
@@ -127,8 +175,9 @@
                                 {!! $errors->first('gender', '<div class="alert alert-danger">:message</div>') !!}
                             </div>
                         </div>
-                    {{--                        GENDER SELECTION COLUMNS Finish--}}
-                    {{--                        TERMS and CONDITION SELECTION COLUMNS START--}}
+                    {{--                        GENDER SELECTION ROW FINISH--}}
+{{-----------------------------------------------------------------------------------------------------------------------------------------------------------------}}
+                    {{--                        TERMS and CONDITION SELECTION ROW START--}}
                     <div class="row">
                         <div class="col-sm-12 form-group {{$errors->has('u_accept')?'has-error':''}}">
 
@@ -141,6 +190,9 @@
                             {!! $errors->first('u_accept', '<div class="alert alert-danger">:message</div>') !!}
                         </div>
                     </div>
+                    {{--                        TERMS and CONDITION SELECTION ROW FINISH--}}
+{{-----------------------------------------------------------------------------------------------------------------------------------------------------------------}}
+{{--                    SUBMIT BUTTON --}}
                     <button type="submit" class="btn btn-primary mr-2">Submit</button>
                 </form>
 
@@ -148,12 +200,50 @@
         </div>
     </div>
 <script>
-    function radioFunction() {
-    var getYes= document.getElementById("optionsRadios1");
-    document.getElementById("yesCollege").style.display=getYes.checked?"block":"none";
-    var getNo= document.getElementById("optionsRadios2");
-        document.getElementById("noCollege").style.display=getNo.checked?"block":"none";
-    }
+
+    $(document).ready(function() {
+        $("input[type='radio']").change(function() {
+            var radioValStu= $(this).val();
+            console.log(radioValStu);
+            if(radioValStu=="yes")
+            {
+                $("#yesStudent").css("display","block");
+                $("#noStudent").css("display","none");
+            }
+            else if(radioValStu=="no")
+            {
+
+                $("#noStudent").css("display","block");
+                $("#yesStudent").css("display","none");
+            }
+        });
+
+        $("input[type='radio']").change(function(){
+            var radioValC= $(this).val();
+            console.log("something"+radioValC);
+            if(radioValC=="college")
+            {
+
+                $("#datauni").css("display","none");
+                $("#datacollege").css("display","block");
+                $("#dataschool").css("display","none");
+            }
+            else if(radioValC=="university")
+            {
+
+                $("#datauni").css("display","block");
+                $("#datacollege").css("display","none");
+                $("#dataschool").css("display","none");
+            }
+            else if(radioValC=="highschool")
+            {
+                $("#datauni").css("display","none");
+                $("#datacollege").css("display","none");
+                $("#dataschool").css("display","block");
+            }
+        });
+    });
+
 
 
 </script>
