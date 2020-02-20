@@ -24,43 +24,55 @@ class BasicInfoValidateRequest extends FormRequest
      */
     public function rules()
     {
-//        return [
-//            'u_fname'=>'required',
-//            'u_lname'=>'required',
-//            'u_email'=>'required|unique:registrations,email|email',
-//
-//            'user_type'=>'required',
-//            'user_type_college'=>'required_if:user_type,yes',
+        return [
+            'u_fname'=>'required',
+            'u_lname'=>'required',
+            'u_email'=>'required|unique:Registrations,email|email',
+            'u_phone'=>'required',
+            'user_type'=>'required',
+            'student_type'=>'required_if:user_type,yes',
+            'college_type'=>'required_if:student_type,college',
+            'university_type'=>'required_if:student_type,university',
+            'highschool_type'=>'required_if:student_type,highschool',
+
 //            'user_past_info'=>'required_if:user_type,no',
 //            'user_current_info'=>'required_if:user_type,no',
-//            'gender'=>'required',
-//            'u_accept'=>'required'
-//
-//        ];
+            'u_accept'=>'required'
+
+        ];
 
     }
     public function messages()
     {
         return [
-            'u_name.required' => 'Username is required!',
-            'u_name.min' => 'Username must be atleast 5 characters',
+
             'u_name.unique' => 'Username already taken',
 
             'u_fname.required' => 'Firstname is required!',
             'u_lname.required' => 'Lastname is required!',
 
+
+
             'u_email.required' => 'Email is required!',
             'u_email.unique' => 'Email already taken',
 
+            'u_phone.required'=> 'Phone Number Required',
+
             'user_type.required'=> 'Please choose',
 
-            'user_type_college.required_if'=>'Selection required',
+            'student_type.required_if'=>'Please Choose',
+
+            'college_type.required_if'=>'Selection required',
+            'university_type.required_if'=>'Selection required',
+            'highschool.required_if'=>'Selection required',
+
+
 
             'user_past_info.required_if'=>'College name required',
 
             'user_current_info.required_if'=>'Job Title required',
 
-            'gender.required' => 'Selection required!',
+
 
             'u_accept.required' => 'Checkbox required',
 

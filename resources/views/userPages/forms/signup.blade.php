@@ -31,14 +31,14 @@
                         <div class="col-sm-6 form-group {{$errors->has('u_fname')?'has-error':''}}">
 
                                 <label class="control-label">First Name</label>
-                                <input type="text" class="form-control" name="u_fname" placeholder="First Name"><br>
+                                <input type="text" class="form-control" name="u_fname" placeholder="First Name" value="{{ old('u_fname') }}"><br>
                             {!! $errors->first('u_fname', '<div class="alert alert-danger">:message</div>') !!}
 
                         </div><!-- Col of last name -->
                         <div class="col-sm-6 form-group {{$errors->has('u_lname')?'has-error':''}}">
 
                                 <label class="control-label">Last Name</label>
-                                <input type="text" class="form-control" name="u_lname" placeholder="Last Name"><br>
+                                <input type="text" class="form-control" name="u_lname" placeholder="Last Name" value="{{ old('u_lname') }}"><br>
                             {!! $errors->first('u_lname', '<div class="alert alert-danger">:message</div>') !!}
                         </div>
                     </div>
@@ -48,14 +48,14 @@
                     <div class="row">
                         <div class="col-sm-6 form-group {{$errors->has('u_email')?'has-error':''}}">
                             <label for="exampleInputEmail">Email</label>
-                            <input type="email" class="form-control" name="u_email" id="u_email" autocomplete="off" placeholder="Email"><br>
+                            <input type="email" class="form-control" name="u_email" id="u_email" autocomplete="off" placeholder="Email" value="{{ old('u_email') }}"><br>
                         {!! $errors->first('u_email', '<div class="alert alert-danger">:message</div>') !!}
                         </div>
                         {{--                        EMAIL NAME COLUMNS FINISh--}}
-                        <div class="col-sm-6 form-group {{$errors->has('u_email')?'has-error':''}}">
+                        <div class="col-sm-6 form-group {{$errors->has('u_phone')?'has-error':''}}">
                             <label for="exampleInputEmail">Phone Number</label>
-                            <input type="tel" class="form-control" name="u_phone" id="u_phno" placeholder="123456789" maxlength="10"><br>
-                            {!! $errors->first('u_email', '<div class="alert alert-danger">:message</div>') !!}
+                            <input type="tel" class="form-control" name="u_phone" id="u_phno" placeholder="123456789" maxlength="10 value="{{ old('u_phone') }}""><br>
+                            {!! $errors->first('u_phone', '<div class="alert alert-danger">:message</div>') !!}
                         </div>
                     </div>
                     {{--                        EMAIL NAME COLUMNS FINISh--}}
@@ -68,7 +68,7 @@
                             <div class="col-sm-6 form-group">
                                 <div class="form-check form-group" >
                                     <label class="form-check-label">
-                                        <input type="radio" class="form-check-input" name="user_type" id="student_type" value="yes" >
+                                        <input type="radio" class="form-check-input" name="user_type" id="student_type" value="yes">
                                         Yes
                                     </label>
                                 </div>
@@ -78,7 +78,6 @@
                                         No
                                     </label>
                                 </div>
-
                             </div>
                             <br>
                             {!! $errors->first('user_type', '<div class="alert alert-danger">:message</div>') !!}
@@ -88,34 +87,38 @@
 {{-----------------------------------------------------------------------------------------------------------------------------------------------------------------}}
                     {{--                        STUDENT YES CHECKED SELECTION ROW START--}}
                     <div class="row" id="yesStudent" style="display: none">
-                        <div class="col-sm-12 form-group  {{$errors->has('user_type')?'has-error':''}}">
+                        <div class="col-sm-12 form-group">
                             <label for="checkboxEnrollment">What's your status?</label>
 
                             <div class="col-sm-12 form-group">
 {{-----------------------------------------------------------------------------------------------------------------------------------------------------------------}}
                                 {{--                        COLLEGE RADIO SELECTION COLUMNS START--}}
-                                <div class="form-check form-group" >
+                                <div class="form-check form-group {{$errors->has('student_type')?'has-error':''}}" >
                                     <label class="form-check-label">
-                                        <input type="radio" class="form-check-input" name="user_type" id="getStudentData" value="college" >
+                                        <input type="radio" class="form-check-input" name="student_type" id="getStudentData" value="college" >
                                         College
                                     </label>
-                                        <select id="datacollege" style="display: none" class="col-sm-12 form-group">
+                                        <select id="datacollege" style="display: none" class="col-sm-12 form-group {{$errors->has('college_type')?'has-error':''}}" name="college_type">
                                             <option>aaaa</option>
                                             <option>bbb</option>
                                         </select>
+                                    <br>
+                                    {!! $errors->first('college_type', '<div class="alert alert-danger">:message</div>') !!}
                                 </div>
 {{--                        COLLEGE RADIO SELECTION COLUMNS ENDS--}}
 {{-----------------------------------------------------------------------------------------------------------------------------------------------------------------}}
 {{--                        UNIVERSITY RADIO SELECTION COLUMNS START--}}
                                 <div class="form-check">
                                     <label class="form-check-label">
-                                        <input type="radio" class="form-check-input" name="user_type" id="getStudentData" value="university">
+                                        <input type="radio" class="form-check-input" name="student_type" id="getStudentData" value="university">
                                         University
                                     </label>
-                                        <select id="datauni" style="display: none" class="col-sm-12 form-group">
+                                        <select id="datauni" style="display: none" class="col-sm-12 form-group {{$errors->has('university_type')?'has-error':''}}" name="university_type">
                                             <option>aaaa</option>
                                             <option>bbb</option>
                                         </select>
+                                    <br>
+                                    {!! $errors->first('university_type', '<div class="alert alert-danger">:message</div>') !!}
                                     </div>
 
 {{--                        UNIVERSITY RADIO SELECTION COLUMNS ENDS--}}
@@ -123,20 +126,22 @@
 {{--                        HIGH SCHOOL RADIO SELECTION COLUMNS START--}}
                                 <div class="form-check">
                                     <label class="form-check-label">
-                                        <input type="radio" class="form-check-input" name="user_type" id="getStudentData" value="highschool">
+                                        <input type="radio" class="form-check-input" name="student_type" id="getStudentData" value="highschool">
                                         High School
                                     </label>
 
-                                        <select  id="dataschool" style="display: none" class="col-sm-12 form-group">
+                                        <select  id="dataschool" style="display: none" class="col-sm-12 form-group {{$errors->has('highschool_type')?'has-error':''}}" name="highschool_type">
                                             <option>aaaa</option>
                                             <option>bbb</option>
                                         </select>
+                                    <br>
+                                    {!! $errors->first('highschool_type', '<div class="alert alert-danger">:message</div>') !!}
                                 </div>
 {{--                        HIGH SCHOOL RADIO SELECTION COLUMNS ENDS--}}
 {{-----------------------------------------------------------------------------------------------------------------------------------------------------------------}}
                             </div>
                             <br>
-                            {!! $errors->first('user_type', '<div class="alert alert-danger">:message</div>') !!}
+                            {!! $errors->first('student_type', '<div class="alert alert-danger">:message</div>') !!}
                         </div>
                     </div>
 {{--                        STUDENT YES RADIO SELECTION ROW ENDS--}}
@@ -159,22 +164,22 @@
                     {{--                        STUDENT NO CHECKED SELECTION ROW FINISH--}}
 {{-----------------------------------------------------------------------------------------------------------------------------------------------------------------}}
                     {{--                        GENDER SELECTION COLUMNS START--}}
-                    <div class="row">
-                        <div class="col-sm-12 form-group {{$errors->has('gender')?'has-error':''}}">
-                            <label for="raduoButtonGender">Gender:</label>
-                        </div>
+{{--                    <div class="row">--}}
+{{--                        <div class="col-sm-12 form-group {{$errors->has('gender')?'has-error':''}}">--}}
+{{--                            <label for="raduoButtonGender">Gender:</label>--}}
+{{--                        </div>--}}
 
-                            <div class="col-sm-12 form-group">
-                                <select class="form-control" name="gender" id="exampleFormControlSelect1">
-                                    <option selected disabled>Select your Gender</option>
-                                    <option value="Male" name="Male">Male</option>
-                                    <option value="Female" name="FeMale">Female</option>
-                                    <option value="Doesn't want to specify" name="Doesn't want to specify">Doesn't want to specify</option>
+{{--                            <div class="col-sm-12 form-group">--}}
+{{--                                <select class="form-control" name="gender" id="exampleFormControlSelect1">--}}
+{{--                                    <option selected disabled>Select your Gender</option>--}}
+{{--                                    <option value="Male" name="Male">Male</option>--}}
+{{--                                    <option value="Female" name="FeMale">Female</option>--}}
+{{--                                    <option value="Doesn't want to specify" name="Doesn't want to specify">Doesn't want to specify</option>--}}
 
-                                </select><br>
-                                {!! $errors->first('gender', '<div class="alert alert-danger">:message</div>') !!}
-                            </div>
-                        </div>
+{{--                                </select><br>--}}
+{{--                                {!! $errors->first('gender', '<div class="alert alert-danger">:message</div>') !!}--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
                     {{--                        GENDER SELECTION ROW FINISH--}}
 {{-----------------------------------------------------------------------------------------------------------------------------------------------------------------}}
                     {{--                        TERMS and CONDITION SELECTION ROW START--}}
