@@ -17,15 +17,17 @@ function view(){
     function insert(BasicInfoValidateRequest $request)
     {
         $validate = $request->validated();
+        //echo $validate['u_email'];
         $signup = new registrations();
-        $signup->email=$validate->input('u_email');
-        $signup->firstname=$validate->input('u_fname');
-        $signup->lastname=$validate->input('u_lname');
-        $signup->contact=$validate->input('u_phone');
+
+        $signup->email=$validate['u_email'];
+        $signup->firstname=$validate['u_fname'];
+        $signup->lastname=$validate['u_lname'];
+        $signup->contact=$validate['u_phone'];
         $signup->school_id=10;
         $signup->occupations='zzzzz';
-        $signup->terms=$validate->input('u_accept');
-        $signup->status='kaib';
+        $signup->terms=$validate['u_accept'];
+        $signup->status='pending';
         $signup->save();
     }
 //    function insert(Request $request)
