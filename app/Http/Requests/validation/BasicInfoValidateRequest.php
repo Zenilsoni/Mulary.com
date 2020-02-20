@@ -64,7 +64,7 @@ class BasicInfoValidateRequest extends FormRequest
 
             'college_type.required_if'=>'Selection required',
             'university_type.required_if'=>'Selection required',
-            'highschool.required_if'=>'Selection required',
+            'highschool_type.required_if'=>'Selection required',
 
 
 
