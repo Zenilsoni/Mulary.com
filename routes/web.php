@@ -88,10 +88,17 @@ Route::get('/signup', 'college\getCollegeController@getcolleges');
 //form validation and insertion post
 Route::post('/signup', 'Authorization\RegisterController@insert');
 
+//verify user for email
+Auth::routes(['verify' => true]);
+
 //get login call
-Route::get('/login', function () {
-    return view('userPages.forms.login');
+Route::get('/emailv', function (){
+ return view('UserPages.Response.Verifyemail');
 });
+
+Route::get('/userinfo', function (){
+    return view('UserPages.forms.login');
+})->middleware('verified');
 
 //Route::group(['prefix' => 'ui-components'], function() {
 

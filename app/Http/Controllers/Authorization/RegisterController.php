@@ -17,7 +17,6 @@ function view(){
     function insert(BasicInfoValidateRequest $request)
     {
         $validate = $request->validated();
-        //echo $validate['u_email'];
         $signup = new registrations();
 
         $signup->email=$validate['u_email'];
@@ -29,6 +28,8 @@ function view(){
         $signup->terms=$validate['u_accept'];
         $signup->status='pending';
         $signup->save();
+
+        return redirect('/emailv');
     }
 //    function insert(Request $request)
 //    {
@@ -46,6 +47,7 @@ function view(){
 //        $signup = new registrations();
 //        $signup->email=$request->input('u_email');
 //        $signup->firstname=$request->input('u_fname');
+
 //        $signup->lastname=$request->input('u_lname');
 //        $signup->contact=$request->input('u_phone');
 //        $signup->school_id=10;
