@@ -143,11 +143,12 @@
 {{--                        HIGH SCHOOL RADIO SELECTION COLUMNS ENDS--}}
 {{-----------------------------------------------------------------------------------------------------------------------------------------------------------------}}
                             </div>
-                            {!! $errors->first('student_type', '<div class="alert alert-danger">:message</div>') !!}
+
                             {!! $errors->first('college_type', '<div class="alert alert-danger">:message</div>') !!}
                             {!! $errors->first('university_type', '<div class="alert alert-danger">:message</div>') !!}
                             {!! $errors->first('highschool_type', '<div class="alert alert-danger">:message</div>') !!}
                         </div>
+                        {!! $errors->first('student_type', '<div class="alert alert-danger">:message</div>') !!}
                     </div>
 {{--                        STUDENT YES RADIO SELECTION ROW ENDS--}}
 {{-----------------------------------------------------------------------------------------------------------------------------------------------------------------}}
@@ -212,9 +213,48 @@
 <script>
 
     $(document).ready(function() {
+        var radioValStu =$("input[type='radio'][name='user_type']:checked").val();
+        var radioValC=$("input[type='radio'][name='student_type']:checked").val();
+
+        $(window).on("load",function(){
+           if(radioValStu=="yes")
+           {
+               $("#yesStudent").css("display","block");
+               $("#noStudent").css("display","none");
+           }
+           else if(radioValStu=="no")
+           {
+
+               $("#noStudent").css("display","block");
+               $("#yesStudent").css("display","none");
+           }
+
+
+            if(radioValC=="college")
+            {
+
+                $("#datauni").css("display","none");
+                $("#datacollege").css("display","block");
+                $("#dataschool").css("display","none");
+            }
+            else if(radioValC=="university")
+            {
+
+                $("#datauni").css("display","block");
+                $("#datacollege").css("display","none");
+                $("#dataschool").css("display","none");
+            }
+            else if(radioValC=="highschool")
+            {
+                $("#datauni").css("display","none");
+                $("#datacollege").css("display","none");
+                $("#dataschool").css("display","block");
+            }
+        });
+
         $("input[type='radio']").change(function() {
-            var radioValStu= $(this).val();
-            console.log(radioValStu);
+             radioValStu= $(this).val();
+            //console.log(radioValStu);
             if(radioValStu=="yes")
             {
                 $("#yesStudent").css("display","block");
@@ -229,7 +269,7 @@
         });
 
         $("input[type='radio']").change(function(){
-            var radioValC= $(this).val();
+            radioValC= $(this).val();
             // console.log("something"+radioValC);
             if(radioValC=="college")
             {

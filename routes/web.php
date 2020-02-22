@@ -293,14 +293,14 @@ Route::get('/userinfo', function (){
         });
     });
 
-    Route::group(['prefix' => 'auth'], function () {
-        Route::get('login', function () {
-            return view('userPages.auth.login');
-        });
-        Route::get('register', function () {
-            return view('userPages.auth.register');
-        });
-    });
+//    Route::group(['prefix' => 'auth'], function () {
+//        Route::get('login', function () {
+//            return view('userPages.auth.login');
+//        });
+//        Route::get('register', function () {
+//            return view('userPages.auth.register');
+//        });
+//    });
 
     Route::group(['prefix' => 'error'], function () {
         Route::get('404', function () {
