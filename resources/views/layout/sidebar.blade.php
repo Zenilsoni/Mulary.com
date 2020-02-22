@@ -19,34 +19,34 @@
               </a>
             </li>
           <li class="nav-item {{ active_class(['/']) }}">
-              <a href="{{ url('/') }}" class="nav-link">
+              <a href="{{ url('/myprofile') }}" class="nav-link">
                   <i class="link-icon" data-feather="user"></i>
                   <span class="link-title">My Profile</span>
               </a>
           </li>
           <li class="nav-item {{ active_class(['/']) }}">
-              <a href="{{ url('/') }}" class="nav-link">
+              <a href="{{ url('/user/myposts') }}" class="nav-link">
                   <i class="mdi mdi-google-wallet"></i>
                   <span class="link-title">My Posts</span>
               </a>
           </li>
           <li class="nav-item {{ active_class(['/']) }}">
-              <a href="{{ url('/') }}" class="nav-link">
+              <a href="{{ url('/earning') }}" class="nav-link">
                   <i class="link-icon" data-feather="box"></i>
                   <span class="link-title">Earnings</span>
               </a>
           </li>
           <li class="nav-item {{ active_class(['/']) }}">
-              <a href="{{ url('/') }}" class="nav-link">
+              <a href="{{ url('/logout') }}" class="nav-link">
                   <i class="link-icon" data-feather="box"></i>
                   <span class="link-title">Logout</span>
               </a>
           </li>
-  
-  
-  
-  
-  
+
+
+
+
+
   {{--      <li class="nav-item nav-category">web apps</li>--}}
   {{--      <li class="nav-item {{ active_class(['email/*']) }}">--}}
   {{--        <a class="nav-link" data-toggle="collapse" href="#email" role="button" aria-expanded="{{ is_active_route(['email/*']) }}" aria-controls="email">--}}
@@ -335,4 +335,3 @@
       </ul>
     </div>
   </nav>
-  

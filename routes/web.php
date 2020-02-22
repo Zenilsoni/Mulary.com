@@ -21,10 +21,25 @@ Route::get('/', function () {
 
 // });
 
+Route::group(['prefix' => 'userPost'], function() {
+    Route::get('facebook/{id}', 'UserPostsController@getFacebookPosts');
+    Route::get('instagram/{id}', 'UserPostsController@getInstagramPosts');
+    Route::post('facebookPosted', 'UserPostsController@facebookPostByUser');
+    Route::post('instagramPosted', 'UserPostsController@instagramPostByUser');
+});
+
+Route::group(['prefix' => 'user'], function() {
+    Route::get('myposts', 'UserPostsController@sharedPostByUser');
+});
+
+Route::get('/myposts', function () {
+    return view('userPages.myposts');
+});
+
 Route::get('/admin', function () {
    return view('adminPages.admindashboard');
-
 });
+
 
 Route::group(['prefix' => 'admin/user/'], function(){
     Route::get('allusers', 'UserViewController@getUser');
@@ -33,6 +48,7 @@ Route::group(['prefix' => 'admin/user/'], function(){
     Route::get('approved', 'UserViewController@getApprovedUser');
     Route::get('compose', function () { return view('userPages.email.compose'); });
 });
+
 
 Route::get('hello/send/email', 'MailerController@mail');
 // Route::group(['prefix' => 'apps'], function(){
