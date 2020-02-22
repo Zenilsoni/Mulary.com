@@ -19,11 +19,11 @@
                                 <form class="forms-sample">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Enter Email address</label>
-                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Emailz">
+                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Email" name="login_email">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">Password</label>
-                                        <input type="password" class="form-control" id="exampleInputPassword1" autocomplete="current-password" placeholder="Password">
+                                        <input type="password" class="form-control" id="exampleInputPassword1" autocomplete="current-password" placeholder="Password" name="login_password">
                                     </div>
                                     <div class="form-check form-check-flat form-check-primary">
                                         <label class="form-check-label">
