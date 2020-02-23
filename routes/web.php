@@ -50,7 +50,7 @@ Route::group(['prefix' => 'admin/user/'], function(){
 });
 
 
-Route::get('hello/send/email', 'MailerController@mail');
+Route::get('hello/send/email', 'MailerController@html_email');
 // Route::group(['prefix' => 'apps'], function(){
 //     Route::get('chat', function () { return view('userPages.apps.chat'); });
 //     Route::get('calendar', function () { return view('userPages.apps.calendar'); });
@@ -104,17 +104,12 @@ Route::get('/signup', 'college\getCollegeController@getcolleges');
 //form validation and insertion post
 Route::post('/signup', 'Authorization\RegisterController@insert');
 
-//verify user for email
-Auth::routes(['verify' => true]);
-
 //get login call
 Route::get('/emailv', function (){
  return view('UserPages.Response.Verifyemail');
 });
 
-Route::get('/userinfo', function (){
-    return view('UserPages.forms.login');
-})->middleware('verified');
+Route::get('/userinfo', 'Authorization\UserInfoController@create');
 
 //Route::group(['prefix' => 'ui-components'], function() {
 

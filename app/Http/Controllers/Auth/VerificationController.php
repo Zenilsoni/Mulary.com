@@ -28,14 +28,14 @@ class VerificationController extends Controller
     protected $redirectTo = '/home';
 
     /**
-     * Create a new controller instance.
+     * Create a new controller instance.0
      *
      * @return void
      */
     public function __construct()
     {
-        $this->middleware('auth');
-        $this->middleware('signed')->only('verify');
-        $this->middleware('throttle:6,1')->only('verify', 'resend');
+//        $this->middleware('auth');
+//        $this->middleware('signed')->only('verify');
+//        $this->middleware('throttle:6,1')->only('verify', 'resend');
     }
 }
