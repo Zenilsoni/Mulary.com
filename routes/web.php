@@ -108,8 +108,9 @@ Route::post('/signup', 'Authorization\RegisterController@insert');
 Route::get('/emailv', function (){
  return view('UserPages.Response.Verifyemail');
 });
-
+//userinfo get and post
 Route::get('/userinfo', 'Authorization\UserInfoController@create');
+Route::post('/userinfo', 'Authorization\UserInfoController@insert');
 
 //Route::group(['prefix' => 'ui-components'], function() {
 

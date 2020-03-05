@@ -32,7 +32,7 @@ function view(){
         $signup->save();
 
 
-        $data = array('name'=>$validate['u_fname'],'email'=>$validate['u_email']);
+        $data = array('name'=>$validate['u_fname'],'email'=>$validate['u_email'],'id'=>$signup->registration_id);
         Mail::send('userPages.Verify.email', $data, function($message) use ($data) {
             $message->to($data['email'], 'Minal Patel')->subject
             ('Please Verify using this Link');
