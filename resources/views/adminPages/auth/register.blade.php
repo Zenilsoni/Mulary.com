@@ -6,6 +6,14 @@
   <div class="row w-100 mx-0 auth-page">
     <div class="col-md-8 col-xl-6 mx-auto">
       <div class="card">
+        <div class="card-header"> {{ isset($url) ? ucwords($url) : ""}} {{ __('Register') }}</div>
+
+            @isset($url)
+            <form method="POST" action='{{ url("register/$url") }}' aria-label="{{ __('Register') }}">
+            @else
+            <form method="POST" action="{{ route('register') }}" aria-label="{{ __('Register') }}">
+            @endisset
+                @csrf
         <div class="row">
           <div class="col-md-4 pr-md-0">
             <div class="auth-left-wrapper" style="background-image: url({{ url('https://via.placeholder.com/219x452') }})">

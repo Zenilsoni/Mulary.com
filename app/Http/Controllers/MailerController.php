@@ -47,8 +47,8 @@ class MailerController extends Controller
 
      public function mail()
      {
-        $name = 'Minal Patel';
-        Mail::to('minal26patel@gmail.com')->send(new SendMailable($name));        
+        $name = 'Sayali Mali';
+        Mail::to('isayalimali@gmail.com')->send(new SendMailable($name));        
         return 'Email was sent';
      }
 }

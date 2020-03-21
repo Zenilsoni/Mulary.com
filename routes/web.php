@@ -26,7 +26,7 @@ Route::get('/admin', function () {
 
 });
 
-Route::group(['prefix' => 'admin/user/'], function(){
+Route::group(['prefix' => '/login/admin/user/'], function(){
     Route::get('allusers', 'UserViewController@getUser');
     Route::get('disapproved', 'UserViewController@getDisApprovedUser');
     Route::get('inprogress', 'UserViewController@getInprogressUser');
@@ -34,14 +34,7 @@ Route::group(['prefix' => 'admin/user/'], function(){
     Route::get('compose', function () { return view('userPages.email.compose'); });
 });
 
-Route::get('hello/send/email', 'MailerController@mail');
-// Route::group(['prefix' => 'apps'], function(){
-//     Route::get('chat', function () { return view('userPages.apps.chat'); });
-//     Route::get('calendar', function () { return view('userPages.apps.calendar'); });
-//     //Route::get('disapproved', 'UserViewController@getDisApprovedUser');
-//    // Route::get('inprogress', 'UserViewController@getInprogressUser');
-//   // Route::get('approved', 'UserViewController@getApprovedUser');
-//    Route::get('compose', function () { return view('userPages.email.compose'); });
+Route::get('hello/send/email', 'MailerController@html_email');
 
 
 // });
@@ -68,6 +61,9 @@ Route::group(['prefix' => 'email'], function(){
     Route::get('compose', function () { return view('userPages.email.compose'); });
 });
 
+Route::get('/login/admin', 'Admin\MainController@showAdminLoginForm');
+Route::post('/login/admin', 'Admin\MainController@adminLogin');
+Route::get('logout', array('uses' => 'Admin\MainController@doLogout'));
 
 Route::post('/mailer', 'PhpMailerController@sendEmail');
 
@@ -108,6 +104,8 @@ Route::post('/signup', 'Authorization\RegisterController@insert');
 //form validation post
     Route::post('/signup', 'Authorization\RegisterController@insert');
 
+    Route::get('/enterprise', 'EnterpriseController@getEnterprise');
+    Route::post('/enterprise', 'EnterpriseController@store');
     Route::group(['prefix' => 'ui-components'], function () {
 
 
@@ -200,6 +198,9 @@ Route::post('/signup', 'Authorization\RegisterController@insert');
         });
         Route::get('wizard', function () {
             return view('userPages.forms.wizard');
+        });
+        Route::get('enterprise', function () {
+            return view('adminPages.enterprise.newenterprise');
         });
     });
 
