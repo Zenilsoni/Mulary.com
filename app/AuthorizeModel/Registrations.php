@@ -2,11 +2,13 @@
 
 namespace App\AuthorizeModel;
 
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Model;
 
 class registrations extends Model
 {
     protected $table="registrations";
+    protected $primaryKey ="registration_id";
     protected $fillable=["email","firstname","lastname","contact","school_id","occupations","terms","status"];
     public $timestamps = false;
 }

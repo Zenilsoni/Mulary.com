@@ -5,6 +5,7 @@
 @endpush
 
 @section('content')
+    <?php $user_id=1; ?>
 
     <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
         <div>
@@ -28,13 +29,13 @@
                     </div>
                     <div class="row align-items-start mb-2">
                         <div class="col-md-7">
-                            <a href="/userPost/facebook">
+                            <a href="{{url('/userPost/facebook', $user_id)}}">
                             <button type="button" id="facebook" class="btn btn-primary btn-icon-text mb-1 mb-md-0">
                                 <i class="btn-icon-prepend" data-feather="facebook"></i>
                                 Facebook
                             </button>
                             </a>
-                            <a href="/userPost/instagram">
+                            <a href="{{url('/userPost/instagram', $user_id)}}">
                             <button type="button" id="instagram" class="btn btn-danger btn-icon-text mb-1 mb-md-0">
                                 <i class="btn-icon-prepend" data-feather="instagram"></i>
                                 Instagram
@@ -51,7 +52,7 @@
                                 <div class="row">
                                     <div class="col-md-6 col-xl-6">
                                         <div class="card-body">
-                                            <img class="img-fluid" src="{{ url('https://via.placeholder.com/453x283') }}" alt="">
+                                            <img class="img-fluid" src="{{ url('uploads/'.$facebookPost->image) }}" alt="">
                                         </div>
                                     </div>
 
@@ -61,7 +62,13 @@
                                                 <p>{{ $facebookPost->description }}</p>
                                             </div>
                                             <div style="margin: 10px;">
-                                                <button class="btn btn-success btn-lg" onclick="plusSlides(1);">Post Now</button>
+                                                <form method="post" action="{{ url('/userPost/facebookPosted')}}">
+                                                    {{ csrf_field() }}
+                                                    <input type="text" name="post_platform" value="{{$facebookPost->media_platform}}" />
+                                                    <input type="text" name="advertise_id" value="{{$facebookPost->add_id}}" />
+                                                    <input type="text" name="user_id" value="1" />
+                                                    <button class="btn btn-success btn-lg" onclick="plusSlides(1);">Post Now</button>
+                                                </form>
                                             </div>
                                             <div style="margin: 10px;">
                                                 <button class="btn btn-danger btn-lg" onclick="plusSlides(1);">Ignore</button>
@@ -82,7 +89,7 @@
                                 <div class="row">
                                     <div class="col-md-6 col-xl-6">
                                         <div class="card-body">
-                                            <img class="img-fluid" src="{{ $instgramPost->image }}" alt="">
+                                            <img class="img-fluid" src="{{ url('uploads/'.$instgramPost->image) }}" alt="">
                                         </div>
                                     </div>
 
@@ -92,7 +99,13 @@
                                                 <p>{{ $instgramPost->description }}</p>
                                             </div>
                                             <div style="margin: 10px;">
-                                                <button class="btn btn-success btn-lg" onclick="plusSlides(1);">Post Now</button>
+                                                <form method="post" action="{{ url('/userPost/instagramPosted')}}">
+                                                    {{ csrf_field() }}
+                                                    <input type="text" name="post_platform" value="{{$instgramPost->media_platform}}" />
+                                                    <input type="text" name="advertise_id" value="{{$instgramPost->add_id}}" />
+                                                    <input type="text" name="user_id" value="1" />
+                                                    <button class="btn btn-success btn-lg" onclick="plusSlides(1);">Post Now</button>
+                                                </form>
                                             </div>
                                             <div style="margin: 10px;">
                                                 <button class="btn btn-danger btn-lg" onclick="plusSlides(1);">Ignore</button>

@@ -68,20 +68,19 @@
                             <div class="col-sm-6 form-group">
                                 <div class="form-check form-group" >
                                     <label class="form-check-label">
-                                        <input type="radio" class="form-check-input" name="user_type" id="student_type" value="yes">
+                                        <input type="radio" class="form-check-input" name="user_type" id="student_type" value="yes" {{(old('user_type') == 'yes') ? 'checked' : ''}} >
                                         Yes
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <label class="form-check-label">
-                                        <input type="radio" class="form-check-input" name="user_type" id="student_type" value="no">
+                                        <input type="radio" class="form-check-input" name="user_type" id="student_type" value="no" {{(old('user_type') == 'no') ? 'checked' : ''}} >
                                         No
                                     </label>
                                 </div>
                             </div>
-                            <br>
-                            {!! $errors->first('user_type', '<div class="alert alert-danger">:message</div>') !!}
                         </div>
+                        {!! $errors->first('user_type', '<div class="alert alert-danger">:message</div>') !!}
                     </div>
                     {{--                        STUDENT Y/N SELECTION ROW FINISH--}}
 {{-----------------------------------------------------------------------------------------------------------------------------------------------------------------}}
@@ -95,30 +94,33 @@
                                 {{--                        COLLEGE RADIO SELECTION COLUMNS START--}}
                                 <div class="form-check form-group {{$errors->has('student_type')?'has-error':''}}" >
                                     <label class="form-check-label">
-                                        <input type="radio" class="form-check-input" name="student_type" id="getStudentData" value="college" >
+                                        <input type="radio" class="form-check-input" name="student_type" id="getStudentData" value="college" {{(old('student_type') == 'college') ? 'checked' : ''}} >
                                         College
                                     </label>
-                                        <select id="datacollege" style="display: none" class="col-sm-12 form-group {{$errors->has('college_type')?'has-error':''}}" name="college_type">
+                                    <div class="col-sm-12 form-group {{$errors->has('college_type')?'has-error':''}}" id="datacollege" style="display: none">
+                                        <select name="college_type">
+                                    <option selected disabled>Select your Gender</option>
                                             <option>aaaa</option>
                                             <option>bbb</option>
                                         </select>
-                                    <br>
-                                    {!! $errors->first('college_type', '<div class="alert alert-danger">:message</div>') !!}
+                                    </div>
                                 </div>
 {{--                        COLLEGE RADIO SELECTION COLUMNS ENDS--}}
 {{-----------------------------------------------------------------------------------------------------------------------------------------------------------------}}
 {{--                        UNIVERSITY RADIO SELECTION COLUMNS START--}}
                                 <div class="form-check">
                                     <label class="form-check-label">
-                                        <input type="radio" class="form-check-input" name="student_type" id="getStudentData" value="university">
+                                        <input type="radio" class="form-check-input" name="student_type" id="getStudentData" value="university" {{(old('student_type') == 'university') ? 'checked' : ''}} >
                                         University
                                     </label>
-                                        <select id="datauni" style="display: none" class="col-sm-12 form-group {{$errors->has('university_type')?'has-error':''}}" name="university_type">
+                                    <div class="col-sm-12 form-group {{$errors->has('university_type')?'has-error':''}}" id="datauni" style="display: none">
+
+                                        <select id="datauni" name="university_type">
+                                            <option selected disabled>Select your Gender</option>
                                             <option>aaaa</option>
                                             <option>bbb</option>
                                         </select>
-                                    <br>
-                                    {!! $errors->first('university_type', '<div class="alert alert-danger">:message</div>') !!}
+                                    </div>
                                     </div>
 
 {{--                        UNIVERSITY RADIO SELECTION COLUMNS ENDS--}}
@@ -126,23 +128,27 @@
 {{--                        HIGH SCHOOL RADIO SELECTION COLUMNS START--}}
                                 <div class="form-check">
                                     <label class="form-check-label">
-                                        <input type="radio" class="form-check-input" name="student_type" id="getStudentData" value="highschool">
+                                        <input type="radio" class="form-check-input" name="student_type" id="getStudentData" value="highschool" {{(old('student_type') == 'highschool') ? 'checked' : ''}} >
                                         High School
                                     </label>
+                                    <div class="col-sm-12 form-group {{$errors->has('highschool_type')?'has-error':''}}" id="dataschool" style="display: none">
 
-                                        <select  id="dataschool" style="display: none" class="col-sm-12 form-group {{$errors->has('highschool_type')?'has-error':''}}" name="highschool_type">
+                                        <select  id="dataschool" name="highschool_type">
+                                            <option selected disabled>Select your Gender</option>
                                             <option>aaaa</option>
                                             <option>bbb</option>
                                         </select>
-                                    <br>
-                                    {!! $errors->first('highschool_type', '<div class="alert alert-danger">:message</div>') !!}
+                                    </div>
                                 </div>
 {{--                        HIGH SCHOOL RADIO SELECTION COLUMNS ENDS--}}
 {{-----------------------------------------------------------------------------------------------------------------------------------------------------------------}}
                             </div>
-                            <br>
-                            {!! $errors->first('student_type', '<div class="alert alert-danger">:message</div>') !!}
+
+                            {!! $errors->first('college_type', '<div class="alert alert-danger">:message</div>') !!}
+                            {!! $errors->first('university_type', '<div class="alert alert-danger">:message</div>') !!}
+                            {!! $errors->first('highschool_type', '<div class="alert alert-danger">:message</div>') !!}
                         </div>
+                        {!! $errors->first('student_type', '<div class="alert alert-danger">:message</div>') !!}
                     </div>
 {{--                        STUDENT YES RADIO SELECTION ROW ENDS--}}
 {{-----------------------------------------------------------------------------------------------------------------------------------------------------------------}}
@@ -207,8 +213,48 @@
 <script>
 
     $(document).ready(function() {
+        var radioValStu =$("input[type='radio'][name='user_type']:checked").val();
+        var radioValC=$("input[type='radio'][name='student_type']:checked").val();
+
+        $(window).on("load",function(){
+           if(radioValStu=="yes")
+           {
+               $("#yesStudent").css("display","block");
+               $("#noStudent").css("display","none");
+           }
+           else if(radioValStu=="no")
+           {
+
+               $("#noStudent").css("display","block");
+               $("#yesStudent").css("display","none");
+           }
+
+
+            if(radioValC=="college")
+            {
+
+                $("#datauni").css("display","none");
+                $("#datacollege").css("display","block");
+                $("#dataschool").css("display","none");
+            }
+            else if(radioValC=="university")
+            {
+
+                $("#datauni").css("display","block");
+                $("#datacollege").css("display","none");
+                $("#dataschool").css("display","none");
+            }
+            else if(radioValC=="highschool")
+            {
+                $("#datauni").css("display","none");
+                $("#datacollege").css("display","none");
+                $("#dataschool").css("display","block");
+            }
+        });
+
         $("input[type='radio']").change(function() {
-            var radioValStu= $(this).val();
+             radioValStu= $(this).val();
+            //console.log(radioValStu);
             if(radioValStu=="yes")
             {
                 $("#yesStudent").css("display","block");
@@ -223,8 +269,8 @@
         });
 
         $("input[type='radio']").change(function(){
-            var radioValC= $(this).val();
-            console.log("something"+radioValC);
+            radioValC= $(this).val();
+            // console.log("something"+radioValC);
             if(radioValC=="college")
             {
 

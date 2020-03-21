@@ -17,14 +17,15 @@ class Registration extends Migration
         Schema::create('registrations', function (Blueprint $table) {
             $table->bigIncrements('registration_id');
             $table->text('email')->nullable(false);
+            $table->timestamp('email_verified_at')->nullable(true);
             $table->text('firstname')->nullable(false);
             $table->text('lastname')->nullable(false);
             $table->text('contact')->nullable(false);
             $table->bigInteger('school_id')->nullable(false);
             $table->text('previous_college')->nullable(true);
-            $table->text('occupations')->nullable();
+            $table->text('occupations')->nullable(true);
             $table->boolean('terms')->nullable(false);
-            $table->text('status')->nullable(true);
+            $table->text('status')->nullable(false);
         });
     }
 

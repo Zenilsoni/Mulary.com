@@ -21,12 +21,31 @@ Route::get('/', function () {
 
 // });
 
-Route::get('/admin', function () {
-   return view('adminPages.admindashboard');
-
+Route::group(['prefix' => 'userPost'], function() {
+    Route::get('facebook/{id}', 'UserPostsController@getFacebookPosts');
+    Route::get('instagram/{id}', 'UserPostsController@getInstagramPosts');
+    Route::post('facebookPosted', 'UserPostsController@facebookPostByUser');
+    Route::post('instagramPosted', 'UserPostsController@instagramPostByUser');
 });
 
+Route::group(['prefix' => 'user'], function() {
+    Route::get('myposts', 'UserPostsController@sharedPostByUser');
+});
+
+Route::get('/myposts', function () {
+    return view('userPages.myposts');
+});
+
+Route::get('/admin', function () {
+   return view('adminPages.admindashboard');
+});
+
+
 Route::group(['prefix' => '/login/admin/user/'], function(){
+
+
+Route::group(['prefix' => 'admin/user/'], function(){
+
     Route::get('allusers', 'UserViewController@getUser');
     Route::get('disapproved', 'UserViewController@getDisApprovedUser');
     Route::get('inprogress', 'UserViewController@getInprogressUser');
@@ -34,7 +53,19 @@ Route::group(['prefix' => '/login/admin/user/'], function(){
     Route::get('compose', function () { return view('userPages.email.compose'); });
 });
 
+
 Route::get('hello/send/email', 'MailerController@html_email');
+
+
+Route::get('hello/send/email', 'MailerController@html_email');
+// Route::group(['prefix' => 'apps'], function(){
+//     Route::get('chat', function () { return view('userPages.apps.chat'); });
+//     Route::get('calendar', function () { return view('userPages.apps.calendar'); });
+//     //Route::get('disapproved', 'UserViewController@getDisApprovedUser');
+//    // Route::get('inprogress', 'UserViewController@getInprogressUser');
+//   // Route::get('approved', 'UserViewController@getApprovedUser');
+//    Route::get('compose', function () { return view('userPages.email.compose'); });
+
 
 
 // });
@@ -81,9 +112,16 @@ Route::post('/mailer', 'PhpMailerController@sendEmail');
 //form get
 Route::get('/signup', 'college\getCollegeController@getcolleges');
 
-//form validation post
+//form validation and insertion post
 Route::post('/signup', 'Authorization\RegisterController@insert');
 
+//get login call
+Route::get('/emailv', function (){
+ return view('UserPages.Response.Verifyemail');
+});
+//userinfo get and post
+Route::get('/userinfo', 'Authorization\UserInfoController@create');
+Route::post('/userinfo', 'Authorization\UserInfoController@insert');
 
 //Route::group(['prefix' => 'ui-components'], function() {
 
@@ -267,14 +305,14 @@ Route::post('/signup', 'Authorization\RegisterController@insert');
         });
     });
 
-    Route::group(['prefix' => 'auth'], function () {
-        Route::get('login', function () {
-            return view('userPages.auth.login');
-        });
-        Route::get('register', function () {
-            return view('userPages.auth.register');
-        });
-    });
+//    Route::group(['prefix' => 'auth'], function () {
+//        Route::get('login', function () {
+//            return view('userPages.auth.login');
+//        });
+//        Route::get('register', function () {
+//            return view('userPages.auth.register');
+//        });
+//    });
 
     Route::group(['prefix' => 'error'], function () {
         Route::get('404', function () {

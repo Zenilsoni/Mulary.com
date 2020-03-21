@@ -16,12 +16,18 @@ class User extends Migration
         //
         Schema::create('mulary_users', function (Blueprint $table) {
             $table->bigIncrements('user_id');
-            $table->bigInteger('registration_id');
-            $table->date('birthdate');
-            $table->bigInteger('address_id');
-            $table->text('connet_type');
-            $table->text('password');
-            $table->text('status');
+            $table->string('password');
+            $table->string('birthdate')->nullable(true);
+            $table->string('address_unit')->nullable(true);
+            $table->string('address_street');
+            $table->string('city');
+            $table->string('postal_code');
+            $table->string('province');
+            $table->string('country');
+            //foriegn key
+            $table->bigInteger('registration_id')->unsigned();
+            $table->foreign('registration_id')->references('registration_id')->on('registrations');
+
         });
     }
 

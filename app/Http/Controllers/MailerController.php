@@ -14,7 +14,7 @@ class MailerController extends Controller
     //
     public function basic_email() {
         $data = array('name'=>"Virat Gandhi");
-     
+
         Mail::send(['text'=>'adminPages.mail'], $data, function($message) {
            $message->to('minal26patel@gmail.com', 'Minal Patel')->subject
               ('Laravel Basic Testing Mail');
@@ -26,7 +26,7 @@ class MailerController extends Controller
      public function html_email() {
         $data = array('name'=>"Virat Gandhi");
         Mail::send('adminPages.mail', $data, function($message) {
-           $message->to('minal26patel@gmail.com', 'Minal Patel')->subject
+           $message->to('zenil9749@gmail.com', 'Minal Patel')->subject
               ('Laravel HTML Testing Mail');
            $message->from('phptestmail1856@gmail.com','Mulary.com');
         });
@@ -47,8 +47,13 @@ class MailerController extends Controller
 
      public function mail()
      {
-        $name = 'Sayali Mali';
-        Mail::to('isayalimali@gmail.com')->send(new SendMailable($name));        
+
+       // $name = 'Sayali Mali';
+       // Mail::to('isayalimali@gmail.com')->send(new SendMailable($name));        
+
+        $name = 'Minal Patel';
+        Mail::to('zenil9749@gmail.com')->send(new SendMailable($name));
+
         return 'Email was sent';
      }
 }
