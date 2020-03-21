@@ -41,13 +41,20 @@ Route::get('/admin', function () {
 });
 
 
+Route::group(['prefix' => '/login/admin/user/'], function(){
+
+
 Route::group(['prefix' => 'admin/user/'], function(){
+
     Route::get('allusers', 'UserViewController@getUser');
     Route::get('disapproved', 'UserViewController@getDisApprovedUser');
     Route::get('inprogress', 'UserViewController@getInprogressUser');
     Route::get('approved', 'UserViewController@getApprovedUser');
     Route::get('compose', function () { return view('userPages.email.compose'); });
 });
+
+
+Route::get('hello/send/email', 'MailerController@html_email');
 
 
 Route::get('hello/send/email', 'MailerController@html_email');
@@ -58,6 +65,7 @@ Route::get('hello/send/email', 'MailerController@html_email');
 //    // Route::get('inprogress', 'UserViewController@getInprogressUser');
 //   // Route::get('approved', 'UserViewController@getApprovedUser');
 //    Route::get('compose', function () { return view('userPages.email.compose'); });
+
 
 
 // });
@@ -84,6 +92,9 @@ Route::group(['prefix' => 'email'], function(){
     Route::get('compose', function () { return view('userPages.email.compose'); });
 });
 
+Route::get('/login/admin', 'Admin\MainController@showAdminLoginForm');
+Route::post('/login/admin', 'Admin\MainController@adminLogin');
+Route::get('logout', array('uses' => 'Admin\MainController@doLogout'));
 
 Route::post('/mailer', 'PhpMailerController@sendEmail');
 
@@ -131,6 +142,8 @@ Route::post('/userinfo', 'Authorization\UserInfoController@insert');
 //form validation post
     Route::post('/signup', 'Authorization\RegisterController@insert');
 
+    Route::get('/enterprise', 'EnterpriseController@getEnterprise');
+    Route::post('/enterprise', 'EnterpriseController@store');
     Route::group(['prefix' => 'ui-components'], function () {
 
 
@@ -223,6 +236,9 @@ Route::post('/userinfo', 'Authorization\UserInfoController@insert');
         });
         Route::get('wizard', function () {
             return view('userPages.forms.wizard');
+        });
+        Route::get('enterprise', function () {
+            return view('adminPages.enterprise.newenterprise');
         });
     });
 

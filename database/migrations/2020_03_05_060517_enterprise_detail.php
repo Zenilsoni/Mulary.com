@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class MularyEnterpriseDetail extends Migration
+class EnterpriseDetail extends Migration
 {
     /**
      * Run the migrations.
@@ -36,7 +36,6 @@ class MularyEnterpriseDetail extends Migration
             $table->text('postal_code');
             $table->text('country');
         });
-       
     }
 
     /**
